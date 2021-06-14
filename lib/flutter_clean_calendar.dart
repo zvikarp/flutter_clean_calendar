@@ -181,7 +181,7 @@ class _CalendarState extends State<Calendar> {
             todayColor: widget.todayColor,
             eventColor: widget.eventColor,
             eventDoneColor: widget.eventDoneColor,
-            events: widget.events![day as DateTime],
+            events: widget.events![day],
             isDayOfWeek: true,
             dayOfWeek: day,
             dayOfWeekStyle: widget.dayOfWeekStyle ??
