@@ -478,8 +478,7 @@ class _CalendarState extends State<Calendar> {
   _firstDayOfWeek(DateTime date) {
     var day = new DateTime.utc(
         _selectedDate.year, _selectedDate.month, _selectedDate.day, 12);
-    return day.subtract(
-        new Duration(days: day.weekday - (widget.startOnMonday ? 1 : 0)));
+    return day.subtract(new Duration(days: day.weekday % 7));
   }
 
   _lastDayOfWeek(DateTime date) {
@@ -488,8 +487,8 @@ class _CalendarState extends State<Calendar> {
 
   List<DateTime> _daysInMonth(DateTime month) {
     var first = Utils.firstDayOfMonth(month);
-    var daysBefore = first.weekday;
-    var firstToDisplay = first.subtract(new Duration(days: daysBefore - 1));
+    var daysBefore = first.weekday % 7;
+    var firstToDisplay = first.subtract(new Duration(days: daysBefore));
     var last = Utils.lastDayOfMonth(month);
 
     var daysAfter = 7 - last.weekday;
